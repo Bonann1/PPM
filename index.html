@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Miami News: Breaking Stories, Sports &amp; Crime | Miami Herald</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Noto+Sans:wght@400;600;700;800&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400;1,700&display=swap" rel="stylesheet"/>
+<style>
+/* ── RESET ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;}
+body{font-family:'Noto Serif',Georgia,serif;background:#efefef;color:#1a1a1a;line-height:1.5;}
+a{text-decoration:none;color:inherit;}
+img{display:block;width:100%;height:100%;object-fit:cover;}
+
+/* ── VARIABLES ── */
+:root{
+  --sans:'Noto Sans',Arial,sans-serif;
+  --serif:'Noto Serif',Georgia,serif;
+  --gothic:'UnifrakturMaguntia',serif;
+  --max-w:1111px;
+  --text:#1a1a1a;
+  --gray:#666;
+  --border:#e0e0e0;
+  --card-bg:#fff;
+  --radius:6px;
+  --gap:10px;
+  --blue:#0066cc;
+  --red:#b01c2e;
+}
+
+/* ════ SITE HEADER ════ */
+.site-header{position:sticky;top:0;z-index:200;background:#fff;}
+
+/* ════ TOPBAR ════ */
+.topbar{background:#fff;border-bottom:1px solid var(--border);}
+.topbar-inner{
+  max-width:var(--max-w);margin:0 auto;padding:6px 18px;
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+  font-family:var(--sans);font-size:13px;
+}
+.topbar-left{display:flex;align-items:center;gap:6px;color:var(--text);}
+.topbar-left svg{width:18px;height:18px;flex-shrink:0;stroke:currentColor;fill:none;stroke-width:1.8;}
+.topbar-center{font-family:var(--gothic);font-size:clamp(24px,3vw,44px);color:#000;text-align:center;line-height:1.05;padding:2px 24px;}
+.topbar-right{display:flex;align-items:center;gap:6px;justify-content:flex-end;font-family:var(--sans);font-size:13px;}
+.topbar-right .sep{color:#bbb;}
+.subscribe-btn{background:#000;color:#fff;font-weight:700;font-size:12px;padding:5px 14px;letter-spacing:.3px;}
+
+/* ════ MAIN NAV ════ */
+.mainnav{background:#fff;border-bottom:1px solid var(--border);}
+.nav-inner{max-width:var(--max-w);margin:0 auto;padding:0 14px;min-height:44px;display:flex;align-items:center;width:100%;}
+.nav-icons{display:flex;align-items:center;flex-shrink:0;}
+.hamburger{display:flex;flex-direction:column;justify-content:space-between;width:18px;height:14px;cursor:pointer;margin-right:8px;}
+.hamburger span{display:block;width:100%;height:2px;background:#000;border-radius:1px;}
+.nav-search{cursor:pointer;display:flex;align-items:center;padding:4px 6px;}
+.nav-search svg{width:18px;height:18px;stroke:#000;fill:none;stroke-width:2.2;stroke-linecap:round;}
+.nav-herald{display:none;font-family:var(--gothic);font-size:22px;color:var(--blue);margin-left:6px;line-height:1;white-space:nowrap;}
+.nav-links{display:flex;align-items:center;flex:1;justify-content:center;white-space:nowrap;overflow:hidden;}
+.nav-links a{font-family:var(--sans);font-size:12.5px;font-weight:800;color:var(--text);padding:14px 10px;display:block;letter-spacing:.3px;text-transform:uppercase;}
+.nav-links a:hover{color:#555;}
+.nav-temp{flex-shrink:0;font-family:var(--sans);font-size:13px;font-weight:600;color:var(--text);margin-left:auto;padding-left:10px;}
+.nav-auth-inline{display:none;font-family:var(--sans);font-size:13px;margin-left:auto;flex-shrink:0;align-items:center;gap:5px;}
+.nav-auth-inline .sep{color:#bbb;}
+.nav-auth-inline .subscribe-btn{font-size:11px;padding:4px 10px;}
+
+/* ════ PROMO BAR ════ */
+.promo-bar{background:#f5f5f5;border-bottom:1px solid var(--border);padding:7px 20px;font-family:var(--sans);font-size:13px;display:flex;align-items:center;justify-content:center;gap:14px;}
+.promo-btn{background:#000;color:#fff;font-size:11.5px;font-weight:800;padding:5px 16px;letter-spacing:.5px;border-radius:2px;}
+
+/* ════ WRAP ════ */
+.wrap{max-width:var(--max-w);margin:0 auto;padding:12px 16px 24px;}
+
+/* ════ ICARD ════ */
+.icard{background:var(--card-bg);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;padding:12px;}
+.icard-img{width:100%;aspect-ratio:16/9;background:#c8c8c8;overflow:hidden;margin-bottom:8px;border-radius:3px;flex-shrink:0;}
+.icard-cat{font-family:var(--sans);font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:1.2px;color:var(--text);display:block;margin-bottom:4px;}
+.icard-title{font-family:var(--serif);font-size:14.5px;font-weight:700;line-height:1.28;color:var(--text);cursor:pointer;margin-bottom:5px;}
+.icard-title:hover{text-decoration:underline;}
+.icard-time{font-family:var(--sans);font-size:11.5px;color:var(--gray);margin-top:auto;padding-top:4px;}
+
+/* ════ HERO ════ */
+.hero-section{display:flex;gap:var(--gap);margin-bottom:var(--gap);align-items:stretch;}
+.hero-main{flex:1;min-width:0;background:var(--card-bg);border-radius:var(--radius);overflow:hidden;padding:14px 14px 16px;display:flex;flex-direction:column;}
+.hero-cat{font-family:var(--sans);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.2px;color:var(--text);display:block;margin-bottom:7px;}
+.hero-hl{font-family:var(--serif);font-size:clamp(18px,2.1vw,27px);font-weight:700;line-height:1.2;color:var(--text);margin-bottom:12px;}
+.hero-img{width:100%;aspect-ratio:16/9;background:#c8c8c8;overflow:hidden;margin-bottom:10px;border-radius:3px;flex-shrink:0;}
+.hero-deck{font-size:14px;line-height:1.55;color:#444;margin-bottom:8px;flex:1;}
+.hero-time{font-family:var(--sans);font-size:12px;color:var(--gray);}
+.hero-aside{width:260px;flex-shrink:0;display:flex;flex-direction:column;gap:var(--gap);}
+.hero-aside .icard{flex:1;}
+
+/* ════ NEWS SECTIONS ════ */
+.news-section{display:flex;gap:var(--gap);align-items:stretch;margin-bottom:var(--gap);}
+.news-list-panel{width:240px;flex-shrink:0;background:var(--card-bg);border-radius:var(--radius);padding:14px;display:flex;flex-direction:column;}
+/* Section heading — no black underline */
+.news-sec-head{font-family:var(--sans);font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--text);padding-bottom:8px;margin-bottom:10px;flex-shrink:0;}
+.news-list{list-style:none;flex:1;}
+/* No gray dividers between list items */
+.news-list li{padding:7px 0;}
+.news-list a{font-family:var(--serif);font-size:13px;font-weight:700;line-height:1.3;color:var(--text);display:block;margin-bottom:3px;}
+.news-list a:hover{text-decoration:underline;}
+.nl-time{font-family:var(--sans);font-size:11px;color:var(--gray);}
+.news-more{font-family:var(--sans);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--blue);display:block;text-align:left;margin-top:12px;flex-shrink:0;}
+.news-more:hover{text-decoration:underline;}
+.news-cards-right{flex:1;min-width:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:var(--gap);}
+.news-cards-right .icard{height:100%;}
+.news-extra-row{display:none;grid-template-columns:1fr 1fr;gap:var(--gap);margin-bottom:var(--gap);}
+
+/* ════ BIG SECTION TITLE ════ */
+.big-sec-title{font-family:var(--sans);font-size:22px;font-weight:800;color:var(--text);padding-bottom:10px;border-bottom:2px solid var(--text);margin:20px 0 var(--gap);}
+
+/* ════ VIDEOS ════ */
+.videos-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap);margin-bottom:4px;}
+.vcard{background:var(--card-bg);border-radius:var(--radius);overflow:hidden;padding:12px;}
+.vcard-img{width:100%;aspect-ratio:16/9;background:#c8c8c8;overflow:hidden;margin-bottom:8px;border-radius:3px;position:relative;flex-shrink:0;}
+.play-icon{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:38px;height:38px;background:rgba(0,0,0,.55);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.play-icon::after{content:'';width:0;height:0;border-style:solid;border-width:7px 0 7px 14px;border-color:transparent transparent transparent #fff;margin-left:3px;}
+.vcard-cat{font-family:var(--sans);font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--text);display:block;margin-bottom:4px;}
+.vcard-title{font-family:var(--serif);font-size:14px;font-weight:700;line-height:1.3;color:var(--text);cursor:pointer;}
+.vcard-title:hover{text-decoration:underline;}
+.vcard-time{font-family:var(--sans);font-size:11px;color:var(--gray);margin-top:5px;}
+
+/* ════ FROM OUR PARTNERS — DESKTOP ════ */
+.desktop-partners{display:flex;gap:var(--gap);align-items:stretch;margin-bottom:var(--gap);}
+/* Small row on desktop (3 icards) */
+.desktop-partners-small{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap);margin-bottom:var(--gap);}
+
+.partner-col{flex:1;min-width:0;background:var(--card-bg);border-radius:var(--radius);overflow:hidden;padding:14px;display:flex;flex-direction:column;}
+.partner-col-head{font-family:var(--sans);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--text);margin-bottom:12px;}
+.partner-feat-img{width:100%;aspect-ratio:16/9;background:#c8c8c8;overflow:hidden;margin-bottom:8px;border-radius:3px;flex-shrink:0;}
+.partner-feat-title{font-family:var(--serif);font-size:14px;font-weight:700;line-height:1.3;color:var(--text);margin-bottom:3px;}
+/* Featured time in red */
+.partner-feat-time{font-family:var(--sans);font-size:11px;color:var(--red);margin-bottom:10px;}
+.partner-list{list-style:none;flex:1;}
+/* No gray dividers in partner lists */
+.partner-list li{padding:7px 0;}
+.partner-list a{font-family:var(--sans);font-size:13px;color:var(--text);line-height:1.35;display:block;margin-bottom:2px;}
+.partner-list a:hover{text-decoration:underline;}
+.pl-time{font-family:var(--sans);font-size:11px;color:var(--gray);}
+.partner-more-btn{display:block;text-align:left;color:var(--blue);font-family:var(--sans);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:0;background:none;cursor:pointer;margin-top:14px;flex-shrink:0;}
+.partner-more-btn:hover{text-decoration:underline;}
+
+/* ════ FROM OUR PARTNERS — RESPONSIVE ════ */
+.partners-responsive{display:none;margin-bottom:var(--gap);}
+.partners-big-cards{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);margin-bottom:var(--gap);}
+/* Big partner card — full partner-col style */
+.partner-card-big{background:var(--card-bg);border-radius:var(--radius);padding:14px;display:flex;flex-direction:column;overflow:hidden;}
+.pcb-head{font-family:var(--sans);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--text);margin-bottom:12px;}
+.pcb-feat-img{width:100%;aspect-ratio:16/9;background:#c8c8c8;overflow:hidden;margin-bottom:8px;border-radius:3px;flex-shrink:0;}
+.pcb-feat-title{font-family:var(--serif);font-size:14px;font-weight:700;line-height:1.3;color:var(--text);margin-bottom:3px;}
+/* Featured time in red */
+.pcb-feat-time{font-family:var(--sans);font-size:11px;color:var(--red);margin-bottom:10px;}
+.pcb-list{list-style:none;flex:1;}
+/* No gray dividers */
+.pcb-list li{padding:7px 0;}
+.pcb-list a{font-family:var(--sans);font-size:13px;color:var(--text);line-height:1.35;display:block;margin-bottom:2px;}
+.pcb-list a:hover{text-decoration:underline;}
+.pcb-list-time{font-family:var(--sans);font-size:11px;color:var(--gray);}
+.pcb-more{display:block;text-align:left;color:var(--blue);font-family:var(--sans);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-top:14px;flex-shrink:0;}
+.pcb-more:hover{text-decoration:underline;}
+/* Small partner card */
+.partners-small-cards{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);margin-bottom:var(--gap);}
+.partner-card-small{background:var(--card-bg);border-radius:var(--radius);padding:12px;display:flex;flex-direction:column;overflow:hidden;}
+.pcs-img{width:100%;aspect-ratio:16/9;background:#c8c8c8;overflow:hidden;margin-bottom:8px;border-radius:3px;flex-shrink:0;}
+.pcs-source{font-family:var(--sans);font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--gray);display:block;margin-bottom:3px;}
+.pcs-title{font-family:var(--serif);font-size:13.5px;font-weight:700;line-height:1.3;color:var(--text);flex:1;}
+.pcs-time{font-family:var(--sans);font-size:11px;color:var(--gray);padding-top:4px;margin-top:auto;}
+.pcs-mobile-only{display:none;}
+
+/* ════ EXTRAS ════ */
+.extras-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap);margin-bottom:var(--gap);}
+
+/* ════ FOOTER ════ */
+footer{background:#fff;border-top:1px solid var(--border);padding-top:24px;margin-top:8px;}
+.footer-wrap{max-width:var(--max-w);margin:0 auto;padding:0 20px;}
+.footer-mcclatchy{display:flex;flex-direction:column;align-items:flex-start;gap:5px;padding-bottom:18px;margin-bottom:22px;}
+.mcc-logo{display:flex;align-items:center;gap:7px;font-family:var(--sans);font-size:15px;font-weight:800;color:#000;}
+.mcc-icon{width:26px;height:26px;background:#000;border-radius:2px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:900;}
+.mcc-subtext{font-family:var(--sans);font-size:12px;color:var(--gray);}
+.footer-cols{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;grid-template-rows:auto auto;column-gap:28px;row-gap:18px;margin-bottom:22px;align-items:start;}
+.fcol-about  {grid-area:1/1/2/2;}
+.fcol-subscr {grid-area:1/2/2/3;}
+.fcol-connect{grid-area:2/1/3/3;}
+.fcol-advert {grid-area:1/3/3/4;}
+.fcol-explore{grid-area:1/4/3/5;}
+.fcol h4{font-family:var(--sans);font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--text);margin-bottom:10px;}
+.fcol ul{list-style:none;}
+.fcol li{margin-bottom:7px;}
+.fcol a{font-family:var(--sans);font-size:12.5px;color:var(--text);}
+.fcol a:hover{text-decoration:underline;}
+.connect-label{font-family:var(--sans);font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--text);margin-bottom:10px;display:block;}
+.social-icons{display:flex;align-items:center;gap:8px;}
+.soc-icon{width:30px;height:30px;background:#000;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.soc-icon svg{width:14px;height:14px;fill:#fff;}
+.footer-bottom{padding:12px 20px;display:flex;flex-wrap:wrap;justify-content:center;gap:6px 24px;max-width:var(--max-w);margin:0 auto;}
+.footer-bottom a{font-family:var(--sans);font-size:11px;color:var(--gray);white-space:nowrap;}
+.footer-bottom a:hover{text-decoration:underline;}
+
+/* ════════════════════════════════
+   TABLET  655px – 1031px
+════════════════════════════════ */
+@media(min-width:655px) and (max-width:1031px){
+  .topbar{display:none;}
+  .promo-bar{display:none;}
+  .nav-herald{display:block;}
+  .nav-links{display:none;}
+  .nav-temp{display:none;}
+  .nav-auth-inline{display:flex;}
+
+  /* Hero: only the big card, no aside */
+  .hero-aside{display:none;}
+
+  /* News: equal-width panel + 2 natural-height icards */
+  .news-section{align-items:flex-start;}
+  .news-list-panel{width:auto;flex:1;}
+  .news-cards-right{flex:1;grid-template-columns:1fr;grid-template-rows:auto auto;}
+  .news-cards-right .icard{height:auto;}
+  .news-cards-right .icard:nth-child(n+3){display:none;}
+  .news-extra-row{display:grid;}
+
+  .videos-grid{grid-template-columns:1fr 1fr;}
+  .extras-grid{grid-template-columns:1fr 1fr;}
+  .desktop-partners{display:none;}
+  .desktop-partners-small{display:none;}
+  .partners-responsive{display:block;}
+
+  /* Footer: 2-col grid */
+  .footer-cols{grid-template-columns:1fr 1fr;grid-template-rows:auto auto auto;column-gap:28px;row-gap:18px;}
+  .fcol-about  {grid-area:1/1/2/2;}
+  .fcol-subscr {grid-area:1/2/2/3;}
+  .fcol-connect{grid-area:2/1/3/2;}
+  .fcol-advert {grid-area:3/1/4/2;}
+  .fcol-explore{grid-area:3/2/4/3;}
+  .footer-bottom{flex-wrap:nowrap;align-items:flex-start;justify-content:flex-start;gap:6px 18px;overflow-x:auto;}
+  .footer-bottom a{white-space:normal;min-width:80px;}
+}
+
+/* ════════════════════════════════
+   MOBILE  ≤ 654px
+════════════════════════════════ */
+@media(max-width:654px){
+  .topbar{display:none;}
+  .promo-bar{display:none;}
+  .nav-herald{display:block;}
+  .nav-links{display:none;}
+  .nav-temp{display:none;}
+  .nav-auth-inline{display:flex;}
+
+  .wrap{padding:0;}
+
+  .hero-section{flex-direction:column;gap:0;margin-bottom:0;}
+  .hero-main{border-radius:0;border-bottom:1px solid var(--border);}
+  .hero-aside{display:none;}
+
+  .news-section{flex-direction:column;gap:0;margin-bottom:0;}
+  .news-list-panel{width:100%;border-radius:0;border-bottom:1px solid var(--border);}
+  .news-cards-right{grid-template-columns:1fr;gap:0;}
+  .news-section--latest .news-cards-right .icard:nth-child(n+3){display:none;}
+  /* Trending: no borders between list items (already global) */
+  .icard{border-radius:0;border-bottom:1px solid var(--border);}
+  .news-extra-row{display:none !important;}
+
+  .big-sec-title{margin:0;padding:10px 14px;border-bottom:2px solid var(--text);}
+
+  .videos-grid{grid-template-columns:1fr;gap:0;}
+  .vcard{border-radius:0;border-bottom:1px solid var(--border);}
+
+  .desktop-partners{display:none;}
+  .desktop-partners-small{display:none;}
+  .partners-responsive{display:block;margin-bottom:0;}
+
+  .partners-big-cards{grid-template-columns:1fr;gap:0;margin-bottom:0;}
+  .partner-card-big{border-radius:0;border-bottom:1px solid var(--border);}
+  .partners-small-cards{grid-template-columns:1fr;gap:0;margin-bottom:0;}
+  .partner-card-small{border-radius:0;border-bottom:1px solid var(--border);}
+  .pcs-mobile-only{display:flex;}
+
+  /* Hide extras-grid on mobile (avoids extra "small cards" after last big card) */
+  .extras-grid{display:none;}
+
+  .footer-wrap{padding:0 16px;}
+  .footer-cols{grid-template-columns:1fr;grid-template-rows:auto;}
+  .fcol-about  {grid-area:auto;order:1;}
+  .fcol-connect{grid-area:auto;order:2;}
+  .fcol-subscr {grid-area:auto;order:3;}
+  .fcol-advert {grid-area:auto;order:4;}
+  .fcol-explore{grid-area:auto;order:5;}
+  .footer-bottom{flex-direction:column;align-items:flex-start;gap:8px;padding:12px 16px;}
+  .footer-bottom a{white-space:normal;}
+}
+@media(max-width:480px){.nav-herald{font-size:18px;}}
+</style>
+</head>
+<body>
+
+<!-- SITE HEADER -->
+<div class="site-header">
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="14" height="16" rx="1"/><path d="M17 8h2a2 2 0 012 2v8a2 2 0 01-2 2"/><line x1="7" y1="8" x2="13" y2="8"/><line x1="7" y1="12" x2="13" y2="12"/><line x1="7" y1="16" x2="10" y2="16"/></svg>
+        <a href="#">Lorem ipsum edition</a>
+      </div>
+      <a href="#" class="topbar-center">Miami Herald</a>
+      <div class="topbar-right">
+        <a href="#">Log In</a><span class="sep">|</span>
+        <a href="#" class="subscribe-btn">Subscribe</a>
+      </div>
+    </div>
+  </div>
+  <nav class="mainnav">
+    <div class="nav-inner">
+      <div class="nav-icons">
+        <div class="hamburger"><span></span><span></span><span></span></div>
+        <div class="nav-search">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7.5"/><line x1="20" y1="20" x2="15.5" y2="15.5"/></svg>
+        </div>
+      </div>
+      <a href="#" class="nav-herald">Miami Herald</a>
+      <div class="nav-links">
+        <a href="#">Lorem</a><a href="#">Ipsum</a><a href="#">Dolor</a><a href="#">Sit</a>
+        <a href="#">Amet</a><a href="#">Consectetur</a><a href="#">Adipiscing</a><a href="#">Elit</a>
+        <a href="#">Sed</a><a href="#">Tempor</a>
+      </div>
+      <div class="nav-temp">76°F</div>
+      <div class="nav-auth-inline">
+        <a href="#">Log In</a><span class="sep">|</span>
+        <a href="#" class="subscribe-btn">Subscribe</a>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<div class="promo-bar">
+  <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+  <a href="#" class="promo-btn">Lorem Ipsum</a>
+</div>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero-section">
+    <div class="hero-main">
+      <span class="hero-cat">Lorem Ipsum</span>
+      <h1 class="hero-hl">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt</h1>
+      <div class="hero-img"><img src="https://placehold.co/860x484/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+      <p class="hero-deck">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim.</p>
+      <span class="hero-time">Lorem ipsum 1 hour ago</span>
+    </div>
+    <div class="hero-aside">
+      <div class="icard">
+        <div class="icard-img"><img src="https://placehold.co/282x159/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+        <span class="icard-cat">Lorem Ipsum</span>
+        <div class="icard-title">Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor</div>
+        <div class="icard-time">Lorem ipsum 2 hours ago</div>
+      </div>
+      <div class="icard">
+        <div class="icard-img"><img src="https://placehold.co/282x159/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+        <span class="icard-cat">Dolor Sit</span>
+        <div class="icard-title">Ut labore et dolore magna aliqua enim ad minim veniam quis nostrud exercitation</div>
+        <div class="icard-time">Lorem ipsum 13 minutes ago</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LATEST NEWS -->
+  <div class="news-section news-section--latest">
+    <div class="news-list-panel">
+      <div class="news-sec-head">Latest News</div>
+      <ul class="news-list">
+        <li><a href="#">Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt</a><span class="nl-time">Lorem ipsum 1 hour ago</span></li>
+        <li><a href="#">Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi aliquip</a><span class="nl-time">Lorem ipsum 1 hour ago</span></li>
+        <li><a href="#">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</a><span class="nl-time">Lorem ipsum 2 hours ago</span></li>
+        <li><a href="#">Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt</a><span class="nl-time">Lorem ipsum 2 hours ago</span></li>
+        <li><a href="#">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium</a><span class="nl-time">Lorem ipsum 3 hours ago</span></li>
+      </ul>
+      <a href="#" class="news-more">More in Latest News &rsaquo;</a>
+    </div>
+    <div class="news-cards-right">
+      <div class="icard">
+        <div class="icard-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+        <span class="icard-cat">Lorem Ipsum</span>
+        <div class="icard-title">Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor</div>
+        <div class="icard-time">Lorem ipsum 2 hours ago</div>
+      </div>
+      <div class="icard">
+        <div class="icard-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+        <span class="icard-cat">Dolor Amet</span>
+        <div class="icard-title">Ut labore et dolore magna aliqua enim ad minim veniam quis nostrud exercitation</div>
+        <div class="icard-time">Lorem ipsum 5 hours ago</div>
+      </div>
+      <div class="icard">
+        <div class="icard-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+        <span class="icard-cat">Adipiscing</span>
+        <div class="icard-title">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore fugiat</div>
+        <div class="icard-time">Lorem ipsum 19 hours ago</div>
+      </div>
+      <div class="icard">
+        <div class="icard-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+        <span class="icard-cat">Consectetur</span>
+        <div class="icard-title">Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt</div>
+        <div class="icard-time">Lorem ipsum 9 hours ago</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRENDING STORIES -->
+  <div class="news-section news-section--trending">
+    <div class="news-list-panel">
+      <div class="news-sec-head">Trending Stories</div>
+      <ul class="news-list">
+        <li><a href="#">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit</a><span class="nl-time">Lorem ipsum 1 hour ago</span></li>
+        <li><a href="#">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet consectetur</a><span class="nl-time">Lorem ipsum 2 hours ago</span></li>
+        <li><a href="#">Ut enim ad minima veniam quis nostrum exercitationem ullam corporis suscipit</a><span class="nl-time">Lorem ipsum 3 hours ago</span></li>
+        <li><a href="#">Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil</a><span class="nl-time">Lorem ipsum 9 hours ago</span></li>
+        <li><a href="#">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium</a><span class="nl-time">Lorem ipsum 11 hours ago</span></li>
+      </ul>
+      <a href="#" class="news-more">More in Trending &rsaquo;</a>
+    </div>
+    <div class="news-cards-right">
+      <div class="icard">
+        <div class="icard-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+        <span class="icard-cat">Sed Tempor</span>
+        <div class="icard-title">Nam libero tempore cum soluta nobis eligendi optio cumque nihil impedit quo</div>
+        <div class="icard-time">Lorem ipsum 22 hours ago</div>
+      </div>
+      <div class="icard">
+        <div class="icard-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+        <span class="icard-cat">Voluptatem</span>
+        <div class="icard-title">Temporibus autem quibusdam et aut officiis debitis rerum necessitatibus saepe</div>
+        <div class="icard-time">Lorem ipsum 3 hours ago</div>
+      </div>
+      <div class="icard">
+        <div class="icard-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+        <span class="icard-cat">Itaque Earum</span>
+        <div class="icard-title">Itaque earum rerum hic tenetur a sapiente delectus ut aut reiciendis voluptatibus</div>
+        <div class="icard-time">Lorem ipsum 11 hours ago</div>
+      </div>
+      <div class="icard">
+        <div class="icard-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+        <span class="icard-cat">Reiciendis</span>
+        <div class="icard-title">Quas molestias excepturi sint occaecati cupiditate non provident similique sunt</div>
+        <div class="icard-time">Lorem ipsum 5 hours ago</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXTRA ROW — tablet only -->
+  <div class="news-extra-row">
+    <div class="icard">
+      <div class="icard-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+      <span class="icard-cat">South Florida</span>
+      <div class="icard-title">Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor</div>
+      <div class="icard-time">Lorem ipsum 4 hours ago</div>
+    </div>
+    <div class="icard">
+      <div class="icard-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+      <span class="icard-cat">Business</span>
+      <div class="icard-title">Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi aliquip</div>
+      <div class="icard-time">Lorem ipsum 5 hours ago</div>
+    </div>
+  </div>
+
+  <!-- VIDEOS -->
+  <div class="big-sec-title">Videos</div>
+  <div class="videos-grid">
+    <div class="vcard">
+      <div class="vcard-img">
+        <img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Video" alt="">
+        <div class="play-icon"></div>
+      </div>
+      <span class="vcard-cat">Lorem Ipsum</span>
+      <div class="vcard-title">Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor</div>
+      <div class="vcard-time">Lorem ipsum 1 hour ago</div>
+    </div>
+    <div class="vcard">
+      <div class="vcard-img">
+        <img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Video" alt="">
+        <div class="play-icon"></div>
+      </div>
+      <span class="vcard-cat">Dolor Sit</span>
+      <div class="vcard-title">Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi aliquip</div>
+      <div class="vcard-time">Lorem ipsum 2 hours ago</div>
+    </div>
+    <div class="vcard">
+      <div class="vcard-img">
+        <img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Video" alt="">
+        <div class="play-icon"></div>
+      </div>
+      <span class="vcard-cat">Amet Consectetur</span>
+      <div class="vcard-title">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</div>
+      <div class="vcard-time">Lorem ipsum 3 hours ago</div>
+    </div>
+    <div class="vcard">
+      <div class="vcard-img">
+        <img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Video" alt="">
+        <div class="play-icon"></div>
+      </div>
+      <span class="vcard-cat">Adipiscing</span>
+      <div class="vcard-title">Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt</div>
+      <div class="vcard-time">Lorem ipsum 4 hours ago</div>
+    </div>
+  </div>
+
+  <!-- FROM OUR PARTNERS -->
+  <div class="big-sec-title">From Our Partners</div>
+
+  <!-- ── DESKTOP ROW 1 ── -->
+  <div class="desktop-partners">
+    <!-- PARTNER 1 -->
+    <div class="partner-col">
+      <div class="partner-col-head">Lorem Ipsum</div>
+      <div class="partner-feat-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+      <div class="partner-feat-title">Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore</div>
+      <div class="partner-feat-time">Lorem ipsum 56 minutes ago</div>
+      <ul class="partner-list">
+        <li><a href="#">Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi</a><span class="pl-time">Lorem ipsum 1 hour ago</span></li>
+        <li><a href="#">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum</a><span class="pl-time">Lorem ipsum 1 hour ago</span></li>
+        <li><a href="#">Excepteur sint occaecat cupidatat non proident sunt in culpa officia</a><span class="pl-time">Lorem ipsum 2 hours ago</span></li>
+        <li><a href="#">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium</a><span class="pl-time">Lorem ipsum 3 hours ago</span></li>
+      </ul>
+      <a href="#" class="partner-more-btn">More in Lorem Ipsum &rsaquo;</a>
+    </div>
+    <!-- PARTNER 2 (The Street — with image) -->
+    <div class="partner-col">
+      <div class="partner-col-head">Dolor Sit</div>
+      <div class="partner-feat-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+      <div class="partner-feat-title">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit consequuntur</div>
+      <div class="partner-feat-time">Lorem ipsum 2 hours ago</div>
+      <ul class="partner-list">
+        <li><a href="#">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet consectetur</a><span class="pl-time">Lorem ipsum 2 hours ago</span></li>
+        <li><a href="#">Ut enim ad minima veniam quis nostrum exercitationem ullam corporis suscipit</a><span class="pl-time">Lorem ipsum 2 hours ago</span></li>
+        <li><a href="#">Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam</a><span class="pl-time">Lorem ipsum 3 hours ago</span></li>
+        <li><a href="#">At vero eos et accusamus et iusto odio dignissimos ducimus blanditiis</a><span class="pl-time">Lorem ipsum 4 hours ago</span></li>
+      </ul>
+      <a href="#" class="partner-more-btn">More in Dolor Sit &rsaquo;</a>
+    </div>
+    <!-- PARTNER 3 -->
+    <div class="partner-col">
+      <div class="partner-col-head">Amet Elit</div>
+      <div class="partner-feat-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+      <div class="partner-feat-title">Nam libero tempore cum soluta nobis eligendi optio cumque nihil impedit quo minus</div>
+      <div class="partner-feat-time">Lorem ipsum 4 hours ago</div>
+      <ul class="partner-list">
+        <li><a href="#">Temporibus autem quibusdam et aut officiis debitis rerum necessitatibus saepe</a><span class="pl-time">Lorem ipsum 4 hours ago</span></li>
+        <li><a href="#">Itaque earum rerum hic tenetur a sapiente delectus ut aut reiciendis</a><span class="pl-time">Lorem ipsum 4 hours ago</span></li>
+        <li><a href="#">Quas molestias excepturi sint occaecati cupiditate non provident similique</a><span class="pl-time">Lorem ipsum 5 hours ago</span></li>
+        <li><a href="#">Similique sunt in culpa qui officia deserunt mollitia animi laborum dolorum</a><span class="pl-time">Lorem ipsum 5 hours ago</span></li>
+      </ul>
+      <a href="#" class="partner-more-btn">More in Amet Elit &rsaquo;</a>
+    </div>
+  </div>
+
+  <!-- ── DESKTOP ROW 2 (extra big row) ── -->
+  <div class="desktop-partners">
+    <div class="partner-col">
+      <div class="partner-col-head">Adipiscing</div>
+      <div class="partner-feat-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+      <div class="partner-feat-title">Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam</div>
+      <div class="partner-feat-time">Lorem ipsum 3 hours ago</div>
+      <ul class="partner-list">
+        <li><a href="#">Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae</a><span class="pl-time">Lorem ipsum 4 hours ago</span></li>
+        <li><a href="#">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit</a><span class="pl-time">Lorem ipsum 5 hours ago</span></li>
+        <li><a href="#">Neque porro quisquam dolorem ipsum quia dolor sit amet consectetur adipisci</a><span class="pl-time">Lorem ipsum 6 hours ago</span></li>
+        <li><a href="#">Ut enim ad minima veniam quis nostrum exercitationem ullam corporis suscipit</a><span class="pl-time">Lorem ipsum 7 hours ago</span></li>
+      </ul>
+      <a href="#" class="partner-more-btn">More in Adipiscing &rsaquo;</a>
+    </div>
+    <div class="partner-col">
+      <div class="partner-col-head">Incididunt</div>
+      <div class="partner-feat-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+      <div class="partner-feat-title">Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae</div>
+      <div class="partner-feat-time">Lorem ipsum 4 hours ago</div>
+      <ul class="partner-list">
+        <li><a href="#">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</a><span class="pl-time">Lorem ipsum 5 hours ago</span></li>
+        <li><a href="#">Nam libero tempore cum soluta nobis eligendi optio cumque nihil impedit quo</a><span class="pl-time">Lorem ipsum 6 hours ago</span></li>
+        <li><a href="#">Temporibus autem quibusdam et aut officiis debitis rerum necessitatibus saepe</a><span class="pl-time">Lorem ipsum 7 hours ago</span></li>
+        <li><a href="#">Itaque earum rerum hic tenetur a sapiente delectus ut aut reiciendis volup</a><span class="pl-time">Lorem ipsum 8 hours ago</span></li>
+      </ul>
+      <a href="#" class="partner-more-btn">More in Incididunt &rsaquo;</a>
+    </div>
+    <div class="partner-col">
+      <div class="partner-col-head">Labore</div>
+      <div class="partner-feat-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+      <div class="partner-feat-title">Quas molestias excepturi sint occaecati cupiditate non provident similique sunt culpa</div>
+      <div class="partner-feat-time">Lorem ipsum 5 hours ago</div>
+      <ul class="partner-list">
+        <li><a href="#">Similique sunt in culpa qui officia deserunt mollitia animi id laborum dolorum</a><span class="pl-time">Lorem ipsum 6 hours ago</span></li>
+        <li><a href="#">Eaque ipsa quae ab illo inventore veritatis et quasi architecto vitae dicta</a><span class="pl-time">Lorem ipsum 7 hours ago</span></li>
+        <li><a href="#">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut fugit consequuntur</a><span class="pl-time">Lorem ipsum 8 hours ago</span></li>
+        <li><a href="#">Perspiciatis unde omnis iste natus error sit voluptatem accusantium laudantium</a><span class="pl-time">Lorem ipsum 9 hours ago</span></li>
+      </ul>
+      <a href="#" class="partner-more-btn">More in Labore &rsaquo;</a>
+    </div>
+  </div>
+
+  <!-- ── DESKTOP SMALL CARDS ROW ── -->
+  <div class="desktop-partners-small">
+    <div class="partner-card-small">
+      <div class="pcs-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+      <span class="pcs-source">Lorem Ipsum</span>
+      <div class="pcs-title">Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor</div>
+      <div class="pcs-time">Lorem ipsum 3 hours ago</div>
+    </div>
+    <div class="partner-card-small">
+      <div class="pcs-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+      <span class="pcs-source">Dolor Sit</span>
+      <div class="pcs-title">Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi aliquip</div>
+      <div class="pcs-time">Lorem ipsum 4 hours ago</div>
+    </div>
+    <div class="partner-card-small">
+      <div class="pcs-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+      <span class="pcs-source">Amet Elit</span>
+      <div class="pcs-title">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</div>
+      <div class="pcs-time">Lorem ipsum 5 hours ago</div>
+    </div>
+  </div>
+
+  <!-- ── TABLET/MOBILE RESPONSIVE PARTNERS ── -->
+  <div class="partners-responsive">
+
+    <!-- BIG GROUP 1 (3 cards — last slot empty on tablet 2-col) -->
+    <div class="partners-big-cards">
+      <div class="partner-card-big">
+        <div class="pcb-head">Lorem Ipsum</div>
+        <div class="pcb-feat-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+        <div class="pcb-feat-title">Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore</div>
+        <div class="pcb-feat-time">Lorem ipsum 56 minutes ago</div>
+        <ul class="pcb-list">
+          <li><a href="#">Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi</a><span class="pcb-list-time">Lorem ipsum 1 hour ago</span></li>
+          <li><a href="#">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum</a><span class="pcb-list-time">Lorem ipsum 1 hour ago</span></li>
+          <li><a href="#">Excepteur sint occaecat cupidatat non proident sunt in culpa officia</a><span class="pcb-list-time">Lorem ipsum 2 hours ago</span></li>
+        </ul>
+        <a href="#" class="pcb-more">More in Lorem Ipsum &rsaquo;</a>
+      </div>
+      <div class="partner-card-big">
+        <div class="pcb-head">Dolor Sit</div>
+        <div class="pcb-feat-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+        <div class="pcb-feat-title">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit consequuntur</div>
+        <div class="pcb-feat-time">Lorem ipsum 2 hours ago</div>
+        <ul class="pcb-list">
+          <li><a href="#">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet consectetur</a><span class="pcb-list-time">Lorem ipsum 2 hours ago</span></li>
+          <li><a href="#">Ut enim ad minima veniam quis nostrum exercitationem ullam corporis suscipit</a><span class="pcb-list-time">Lorem ipsum 3 hours ago</span></li>
+          <li><a href="#">Quis autem vel eum iure reprehenderit in ea voluptate velit esse quam</a><span class="pcb-list-time">Lorem ipsum 3 hours ago</span></li>
+        </ul>
+        <a href="#" class="pcb-more">More in Dolor Sit &rsaquo;</a>
+      </div>
+      <div class="partner-card-big">
+        <div class="pcb-head">Amet Elit</div>
+        <div class="pcb-feat-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+        <div class="pcb-feat-title">Nam libero tempore cum soluta nobis eligendi optio cumque nihil impedit quo minus id quod</div>
+        <div class="pcb-feat-time">Lorem ipsum 4 hours ago</div>
+        <ul class="pcb-list">
+          <li><a href="#">Temporibus autem quibusdam et aut officiis debitis rerum necessitatibus saepe</a><span class="pcb-list-time">Lorem ipsum 4 hours ago</span></li>
+          <li><a href="#">Itaque earum rerum hic tenetur a sapiente delectus ut aut reiciendis</a><span class="pcb-list-time">Lorem ipsum 5 hours ago</span></li>
+          <li><a href="#">Quas molestias excepturi sint occaecati cupiditate non provident similique</a><span class="pcb-list-time">Lorem ipsum 5 hours ago</span></li>
+        </ul>
+        <a href="#" class="pcb-more">More in Amet Elit &rsaquo;</a>
+      </div>
+      <!-- 4th slot empty on tablet -->
+    </div>
+
+    <!-- SMALL GROUP 1 (4 cards) -->
+    <div class="partners-small-cards">
+      <div class="partner-card-small">
+        <div class="pcs-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+        <span class="pcs-source">Lorem Ipsum</span>
+        <div class="pcs-title">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</div>
+        <div class="pcs-time">Lorem ipsum 3 hours ago</div>
+      </div>
+      <div class="partner-card-small">
+        <div class="pcs-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+        <span class="pcs-source">Dolor Sit</span>
+        <div class="pcs-title">Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta</div>
+        <div class="pcs-time">Lorem ipsum 4 hours ago</div>
+      </div>
+      <div class="partner-card-small">
+        <div class="pcs-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+        <span class="pcs-source">Amet Elit</span>
+        <div class="pcs-title">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit consequuntur</div>
+        <div class="pcs-time">Lorem ipsum 5 hours ago</div>
+      </div>
+      <div class="partner-card-small">
+        <div class="pcs-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+        <span class="pcs-source">Lorem Ipsum</span>
+        <div class="pcs-title">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet consectetur adipisci</div>
+        <div class="pcs-time">Lorem ipsum 1 hour ago</div>
+      </div>
+    </div>
+
+    <!-- BIG GROUP 2 (3 cards) -->
+    <div class="partners-big-cards">
+      <div class="partner-card-big">
+        <div class="pcb-head">Adipiscing</div>
+        <div class="pcb-feat-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+        <div class="pcb-feat-title">Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium</div>
+        <div class="pcb-feat-time">Lorem ipsum 3 hours ago</div>
+        <ul class="pcb-list">
+          <li><a href="#">Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae</a><span class="pcb-list-time">Lorem ipsum 4 hours ago</span></li>
+          <li><a href="#">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit</a><span class="pcb-list-time">Lorem ipsum 5 hours ago</span></li>
+          <li><a href="#">Neque porro quisquam dolorem ipsum quia dolor sit amet consectetur adipisci</a><span class="pcb-list-time">Lorem ipsum 6 hours ago</span></li>
+        </ul>
+        <a href="#" class="pcb-more">More in Adipiscing &rsaquo;</a>
+      </div>
+      <div class="partner-card-big">
+        <div class="pcb-head">Incididunt</div>
+        <div class="pcb-feat-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+        <div class="pcb-feat-title">Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae</div>
+        <div class="pcb-feat-time">Lorem ipsum 4 hours ago</div>
+        <ul class="pcb-list">
+          <li><a href="#">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</a><span class="pcb-list-time">Lorem ipsum 5 hours ago</span></li>
+          <li><a href="#">Nam libero tempore cum soluta nobis eligendi optio cumque nihil impedit quo</a><span class="pcb-list-time">Lorem ipsum 6 hours ago</span></li>
+          <li><a href="#">Temporibus autem quibusdam et aut officiis debitis rerum necessitatibus saepe</a><span class="pcb-list-time">Lorem ipsum 7 hours ago</span></li>
+        </ul>
+        <a href="#" class="pcb-more">More in Incididunt &rsaquo;</a>
+      </div>
+      <div class="partner-card-big">
+        <div class="pcb-head">Labore</div>
+        <div class="pcb-feat-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+        <div class="pcb-feat-title">Quas molestias excepturi sint occaecati cupiditate non provident similique sunt in culpa</div>
+        <div class="pcb-feat-time">Lorem ipsum 5 hours ago</div>
+        <ul class="pcb-list">
+          <li><a href="#">Similique sunt in culpa qui officia deserunt mollitia animi id laborum dolorum</a><span class="pcb-list-time">Lorem ipsum 6 hours ago</span></li>
+          <li><a href="#">Eaque ipsa quae ab illo inventore veritatis et quasi architecto vitae dicta</a><span class="pcb-list-time">Lorem ipsum 7 hours ago</span></li>
+          <li><a href="#">Nemo enim ipsam voluptatem quia voluptas aspernatur aut odit consequuntur</a><span class="pcb-list-time">Lorem ipsum 8 hours ago</span></li>
+        </ul>
+        <a href="#" class="pcb-more">More in Labore &rsaquo;</a>
+      </div>
+      <!-- 4th slot empty -->
+    </div>
+
+    <!-- SMALL GROUP 2 (4 on tablet, 6 on mobile) -->
+    <div class="partners-small-cards">
+      <div class="partner-card-small">
+        <div class="pcs-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+        <span class="pcs-source">Adipiscing</span>
+        <div class="pcs-title">Lorem ipsum dolor sit amet consectetur adipiscing elit ut labore et dolore magna</div>
+        <div class="pcs-time">Lorem ipsum 6 hours ago</div>
+      </div>
+      <div class="partner-card-small">
+        <div class="pcs-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+        <span class="pcs-source">Incididunt</span>
+        <div class="pcs-title">Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt</div>
+        <div class="pcs-time">Lorem ipsum 7 hours ago</div>
+      </div>
+      <div class="partner-card-small">
+        <div class="pcs-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+        <span class="pcs-source">Labore</span>
+        <div class="pcs-title">Sunt in culpa qui officia deserunt mollit anim id est laborum perspiciatis unde</div>
+        <div class="pcs-time">Lorem ipsum 8 hours ago</div>
+      </div>
+      <div class="partner-card-small">
+        <div class="pcs-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+        <span class="pcs-source">Lorem Ipsum</span>
+        <div class="pcs-title">Sed ut perspiciatis natus error voluptatem accusantium doloremque totam aperiam</div>
+        <div class="pcs-time">Lorem ipsum 2 hours ago</div>
+      </div>
+      <!-- Mobile-only extras (2 more = 6 total) -->
+      <div class="partner-card-small pcs-mobile-only">
+        <div class="pcs-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+        <span class="pcs-source">Dolor Sit</span>
+        <div class="pcs-title">Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta</div>
+        <div class="pcs-time">Lorem ipsum 3 hours ago</div>
+      </div>
+      <div class="partner-card-small pcs-mobile-only">
+        <div class="pcs-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+        <span class="pcs-source">Amet Elit</span>
+        <div class="pcs-title">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit</div>
+        <div class="pcs-time">Lorem ipsum 4 hours ago</div>
+      </div>
+    </div>
+
+    <!-- BIG GROUP 3 (3 cards) -->
+    <div class="partners-big-cards">
+      <div class="partner-card-big">
+        <div class="pcb-head">Voluptatem</div>
+        <div class="pcb-feat-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+        <div class="pcb-feat-title">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium</div>
+        <div class="pcb-feat-time">Lorem ipsum 6 hours ago</div>
+        <ul class="pcb-list">
+          <li><a href="#">Nam libero tempore cum soluta nobis eligendi optio cumque nihil impedit quo</a><span class="pcb-list-time">Lorem ipsum 7 hours ago</span></li>
+          <li><a href="#">Temporibus autem quibusdam et aut officiis debitis rerum necessitatibus saepe</a><span class="pcb-list-time">Lorem ipsum 8 hours ago</span></li>
+          <li><a href="#">Itaque earum rerum hic tenetur a sapiente delectus ut aut reiciendis volup</a><span class="pcb-list-time">Lorem ipsum 9 hours ago</span></li>
+        </ul>
+        <a href="#" class="pcb-more">More in Voluptatem &rsaquo;</a>
+      </div>
+      <div class="partner-card-big">
+        <div class="pcb-head">Exercitation</div>
+        <div class="pcb-feat-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+        <div class="pcb-feat-title">Similique sunt in culpa qui officia deserunt mollitia animi id est laborum et dolorum</div>
+        <div class="pcb-feat-time">Lorem ipsum 7 hours ago</div>
+        <ul class="pcb-list">
+          <li><a href="#">Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae</a><span class="pcb-list-time">Lorem ipsum 8 hours ago</span></li>
+          <li><a href="#">Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</a><span class="pcb-list-time">Lorem ipsum 9 hours ago</span></li>
+          <li><a href="#">Quis autem vel eum iure reprehenderit in ea voluptate velit esse quam nihil</a><span class="pcb-list-time">Lorem ipsum 10 hours ago</span></li>
+        </ul>
+        <a href="#" class="pcb-more">More in Exercitation &rsaquo;</a>
+      </div>
+      <div class="partner-card-big">
+        <div class="pcb-head">Ullamco</div>
+        <div class="pcb-feat-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+        <div class="pcb-feat-title">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet consectetur adipisci velit</div>
+        <div class="pcb-feat-time">Lorem ipsum 8 hours ago</div>
+        <ul class="pcb-list">
+          <li><a href="#">At vero eos et accusamus iusto odio dignissimos ducimus qui blanditiis</a><span class="pcb-list-time">Lorem ipsum 9 hours ago</span></li>
+          <li><a href="#">Nam libero tempore cum soluta nobis eligendi optio cumque nihil impedit</a><span class="pcb-list-time">Lorem ipsum 10 hours ago</span></li>
+          <li><a href="#">Temporibus autem quibusdam aut officiis debitis rerum necessitatibus saepe</a><span class="pcb-list-time">Lorem ipsum 11 hours ago</span></li>
+        </ul>
+        <a href="#" class="pcb-more">More in Ullamco &rsaquo;</a>
+      </div>
+      <!-- 4th slot empty -->
+    </div>
+
+    <!-- SMALL GROUP 3 (4 cards) -->
+    <div class="partners-small-cards">
+      <div class="partner-card-small">
+        <div class="pcs-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+        <span class="pcs-source">Voluptatem</span>
+        <div class="pcs-title">Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod incididunt</div>
+        <div class="pcs-time">Lorem ipsum 9 hours ago</div>
+      </div>
+      <div class="partner-card-small">
+        <div class="pcs-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+        <span class="pcs-source">Exercitation</span>
+        <div class="pcs-title">Ut enim ad minim veniam quis nostrud ullamco laboris nisi ut aliquip commodo</div>
+        <div class="pcs-time">Lorem ipsum 10 hours ago</div>
+      </div>
+      <div class="partner-card-small">
+        <div class="pcs-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+        <span class="pcs-source">Ullamco</span>
+        <div class="pcs-title">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore fugiat</div>
+        <div class="pcs-time">Lorem ipsum 11 hours ago</div>
+      </div>
+      <div class="partner-card-small">
+        <div class="pcs-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+        <span class="pcs-source">Voluptatem</span>
+        <div class="pcs-title">Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt</div>
+        <div class="pcs-time">Lorem ipsum 12 hours ago</div>
+      </div>
+    </div>
+
+  </div><!-- /partners-responsive -->
+
+  <!-- EXTRAS (desktop + tablet only — hidden on mobile) -->
+  <div class="extras-grid">
+    <div class="icard">
+      <div class="icard-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+      <span class="icard-cat">Lorem Ipsum</span>
+      <div class="icard-title">Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor</div>
+      <div class="icard-time">Lorem ipsum 10 hours ago</div>
+    </div>
+    <div class="icard">
+      <div class="icard-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+      <span class="icard-cat">Dolor Amet</span>
+      <div class="icard-title">Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi aliquip</div>
+      <div class="icard-time">Lorem ipsum 11 hours ago</div>
+    </div>
+    <div class="icard">
+      <div class="icard-img"><img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Photo" alt=""></div>
+      <span class="icard-cat">Adipiscing</span>
+      <div class="icard-title">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore fugiat</div>
+      <div class="icard-time">Lorem ipsum 12 hours ago</div>
+    </div>
+  </div>
+
+</div><!-- /wrap -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-wrap">
+    <div class="footer-mcclatchy">
+      <div class="mcc-logo"><div class="mcc-icon">M</div>McClatchy</div>
+      <div class="mcc-subtext">Part of the McClatchy Media Network</div>
+    </div>
+    <div class="footer-cols">
+      <div class="fcol fcol-about">
+        <h4>About</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Site Map</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Archives</a></li>
+        </ul>
+      </div>
+      <div class="fcol fcol-subscr">
+        <h4>Subscriptions</h4>
+        <ul>
+          <li><a href="#">Customer Service</a></li>
+          <li><a href="#">Start a Subscription</a></li>
+          <li><a href="#">Cancel a Subscription</a></li>
+          <li><a href="#">Make a Payment</a></li>
+        </ul>
+      </div>
+      <div class="fcol fcol-connect">
+        <span class="connect-label">Connect with us:</span>
+        <div class="social-icons">
+          <a href="#" class="soc-icon" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+          <a href="#" class="soc-icon" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="#" class="soc-icon" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" style="fill:#000"/></svg></a>
+          <a href="#" class="soc-icon" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" class="soc-icon" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.82a8.16 8.16 0 004.77 1.52V6.89a4.86 4.86 0 01-1-.2z"/></svg></a>
+        </div>
+      </div>
+      <div class="fcol fcol-advert">
+        <h4>Advertising</h4>
+        <ul>
+          <li><a href="#">Mcclatchy Advertising</a></li>
+          <li><a href="#">Place an Ad</a></li>
+          <li><a href="#">Place a Classified Ad</a></li>
+          <li><a href="#">Place an Ad – Celebrations</a></li>
+          <li><a href="#">Place an Obituary</a></li>
+          <li><a href="#">Staffing Solutions</a></li>
+          <li><a href="#">Political | Advocacy Advertising</a></li>
+        </ul>
+      </div>
+      <div class="fcol fcol-explore">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#">Read Today's Edition</a></li>
+          <li><a href="#">Mobile Apps</a></li>
+          <li><a href="#">Newsletters</a></li>
+          <li><a href="#">Puzzles &amp; Games</a></li>
+          <li><a href="#">Horoscopes</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <a href="#">Copyright</a>
+    <a href="#">Commenting Policy</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Cookie Preferences</a>
+    <a href="#">Your Privacy Choices</a>
+    <a href="#">Mobile SMS Terms of Service</a>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1119,9 +1119,182 @@
           font-size: 18px;
         }
       }
+
+      /* ════ SIDEBAR ════ */
+      #sidebar-toggle {
+        display: none;
+      }
+      .hamburger {
+        list-style: none;
+      }
+      .hamburger::-webkit-details-marker {
+        display: none;
+      }
+      .sidebar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 335px;
+        height: 100vh;
+        background: #fff;
+        font-family: var(--sans);
+        color: var(--text);
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        overflow-y: auto;
+        overflow-x: hidden;
+        z-index: 150;
+        border-right: 1px solid var(--border);
+        padding: 18px 22px 80px;
+      }
+      #sidebar-toggle:checked ~ .site-header .sidebar {
+        transform: translateX(0);
+      }
+      .sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.35);
+        z-index: 140;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+      #sidebar-toggle:checked ~ .sidebar-overlay {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      body:has(#sidebar-toggle:checked) {
+        overflow: hidden;
+      }
+      .sb-search {
+        display: flex;
+        align-items: center;
+        background: #f3f4f6;
+        padding: 10px 14px;
+        border-radius: 2px;
+        margin-bottom: 14px;
+      }
+      .sb-search input {
+        border: none;
+        background: transparent;
+        outline: none;
+        font-family: var(--sans);
+        font-size: 14px;
+        flex: 1;
+        color: var(--text);
+      }
+      .sb-search input::placeholder {
+        color: #6b7280;
+      }
+      .sb-search svg {
+        width: 16px;
+        height: 16px;
+        stroke: #1a1a1a;
+        fill: none;
+        stroke-width: 2.2;
+        stroke-linecap: round;
+        flex-shrink: 0;
+      }
+      .sb-item {
+        display: block;
+        padding: 12px 0;
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--text);
+        border-bottom: none;
+      }
+      .sb-group {
+        border: none;
+      }
+      .sb-group > summary {
+        list-style: none;
+        cursor: pointer;
+        padding: 12px 0;
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--text);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .sb-group > summary::-webkit-details-marker {
+        display: none;
+      }
+      .sb-group > summary::after {
+        content: "";
+        width: 9px;
+        height: 9px;
+        border-right: 2px solid #1a1a1a;
+        border-bottom: 2px solid #1a1a1a;
+        transform: rotate(45deg);
+        margin-right: 4px;
+        margin-top: -4px;
+        transition: transform 0.2s ease;
+      }
+      .sb-group[open] > summary::after {
+        transform: rotate(-135deg);
+        margin-top: 4px;
+      }
+      .sb-sub {
+        background: #f3f4f6;
+        margin: 0 -22px;
+        padding: 4px 22px;
+      }
+      .sb-sub a {
+        display: block;
+        padding: 10px 0;
+        font-size: 13.5px;
+        font-weight: 400;
+        color: var(--text);
+      }
+      .sb-divider {
+        height: 1px;
+        background: var(--border);
+        margin: 10px 0;
+      }
+      .sb-featured-title {
+        color: #4a5d6e;
+        font-size: 16px;
+        font-weight: 800;
+        padding: 14px 0 10px;
+      }
+      .sb-feat-item {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 10px 0;
+      }
+      .sb-feat-item .sb-feat-img {
+        width: 72px;
+        height: 50px;
+        background: #eef0f3;
+        flex-shrink: 0;
+        overflow: hidden;
+      }
+      .sb-feat-item .sb-feat-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .sb-feat-item span {
+        font-size: 14px;
+        font-weight: 700;
+      }
+      @media (max-width: 770px) {
+        .sidebar {
+          width: 100%;
+          border-right: none;
+        }
+      }
     </style>
   </head>
   <body>
+    <!-- SIDEBAR TOGGLE -->
+    <input type="checkbox" id="sidebar-toggle" />
+    <label for="sidebar-toggle" class="sidebar-overlay"></label>
     <!-- SITE HEADER -->
     <div class="site-header">
       <div class="topbar">
@@ -1146,7 +1319,7 @@
       <nav class="mainnav">
         <div class="nav-inner">
           <div class="nav-icons">
-            <div class="hamburger"><span></span><span></span><span></span></div>
+            <label for="sidebar-toggle" class="hamburger"><span></span><span></span><span></span></label>
             <div class="nav-search">
               <svg viewBox="0 0 24 24">
                 <circle cx="11" cy="11" r="7.5" />
@@ -1168,6 +1341,194 @@
           </div>
         </div>
       </nav>
+      <!-- SIDEBAR -->
+      <aside class="sidebar" aria-label="Site menu">
+        <form class="sb-search" onsubmit="return false">
+          <input type="text" placeholder="Search" aria-label="Search" />
+          <svg viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="7.5" />
+            <line x1="20" y1="20" x2="15.5" y2="15.5" />
+          </svg>
+        </form>
+
+        <a href="#" class="sb-item">Home</a>
+        <details class="sb-group">
+          <summary>Customer Service</summary>
+          <div class="sb-sub">
+            <a href="#">Lorem Ipsum</a>
+            <a href="#">Dolor Sit</a>
+            <a href="#">Amet Consectetur</a>
+          </div>
+        </details>
+        <details class="sb-group">
+          <summary>Stay Connected</summary>
+          <div class="sb-sub">
+            <a href="#">Lorem Ipsum</a>
+            <a href="#">Dolor Sit</a>
+            <a href="#">Amet Consectetur</a>
+          </div>
+        </details>
+        <a href="#" class="sb-item">Read today's Edition</a>
+        <a href="#" class="sb-item">Miami-Dade Favorites</a>
+
+        <div class="sb-divider"></div>
+
+        <details class="sb-group">
+          <summary>News</summary>
+          <div class="sb-sub">
+            <a href="#">Lorem Ipsum</a>
+            <a href="#">Dolor Sit</a>
+            <a href="#">Amet Consectetur</a>
+          </div>
+        </details>
+        <details class="sb-group">
+          <summary>Sports</summary>
+          <div class="sb-sub">
+            <a href="#">Lorem Ipsum</a>
+            <a href="#">Dolor Sit</a>
+            <a href="#">Amet Consectetur</a>
+          </div>
+        </details>
+        <details class="sb-group">
+          <summary>Politics</summary>
+          <div class="sb-sub">
+            <a href="#">Lorem Ipsum</a>
+            <a href="#">Dolor Sit</a>
+            <a href="#">Amet Consectetur</a>
+          </div>
+        </details>
+        <details class="sb-group">
+          <summary>Business</summary>
+          <div class="sb-sub">
+            <a href="#">Lorem Ipsum</a>
+            <a href="#">Dolor Sit</a>
+            <a href="#">Amet Consectetur</a>
+          </div>
+        </details>
+        <details class="sb-group">
+          <summary>Living &amp; Entertainment</summary>
+          <div class="sb-sub">
+            <a href="#">Lorem Ipsum</a>
+            <a href="#">Dolor Sit</a>
+            <a href="#">Amet Consectetur</a>
+          </div>
+        </details>
+        <details class="sb-group">
+          <summary>Opinion</summary>
+          <div class="sb-sub">
+            <a href="#">Lorem Ipsum</a>
+            <a href="#">Dolor Sit</a>
+            <a href="#">Amet Consectetur</a>
+          </div>
+        </details>
+        <details class="sb-group">
+          <summary>Obituaries</summary>
+          <div class="sb-sub">
+            <a href="#">Lorem Ipsum</a>
+            <a href="#">Dolor Sit</a>
+            <a href="#">Amet Consectetur</a>
+          </div>
+        </details>
+        <a href="#" class="sb-item">Video</a>
+
+        <div class="sb-divider"></div>
+
+        <div class="sb-featured-title">Featured</div>
+        <a href="#" class="sb-feat-item">
+          <div class="sb-feat-img"><img src="https://placehold.co/144x100" alt="" /></div>
+          <span>Miami.com</span>
+        </a>
+        <a href="#" class="sb-feat-item">
+          <div class="sb-feat-img"><img src="https://placehold.co/144x100" alt="" /></div>
+          <span>Detour Travel</span>
+        </a>
+        <a href="#" class="sb-feat-item">
+          <div class="sb-feat-img"><img src="https://placehold.co/144x100" alt="" /></div>
+          <span>Florida Keys News</span>
+        </a>
+        <a href="#" class="sb-feat-item">
+          <div class="sb-feat-img"><img src="https://placehold.co/144x100" alt="" /></div>
+          <span>El Nuevo Herald</span>
+        </a>
+        <a href="#" class="sb-feat-item">
+          <div class="sb-feat-img"><img src="https://placehold.co/144x100" alt="" /></div>
+          <span>Miami-Dade Favorites</span>
+        </a>
+        <a href="#" class="sb-feat-item">
+          <div class="sb-feat-img"><img src="https://placehold.co/144x100" alt="" /></div>
+          <span>Coral Springs News</span>
+        </a>
+        <a href="#" class="sb-feat-item">
+          <div class="sb-feat-img"><img src="https://placehold.co/144x100" alt="" /></div>
+          <span>Miramar News</span>
+        </a>
+        <a href="#" class="sb-feat-item">
+          <div class="sb-feat-img"><img src="https://placehold.co/144x100" alt="" /></div>
+          <span>Pembroke Pines News</span>
+        </a>
+
+        <div class="sb-divider"></div>
+
+        <details class="sb-group">
+          <summary>Guides</summary>
+          <div class="sb-sub">
+            <a href="#">Lorem Ipsum</a>
+            <a href="#">Dolor Sit</a>
+            <a href="#">Amet Consectetur</a>
+          </div>
+        </details>
+        <details class="sb-group">
+          <summary>Shopping/Reviews</summary>
+          <div class="sb-sub">
+            <a href="#">Lorem Ipsum</a>
+            <a href="#">Dolor Sit</a>
+            <a href="#">Amet Consectetur</a>
+          </div>
+        </details>
+        <details class="sb-group">
+          <summary>Deals &amp; Offers</summary>
+          <div class="sb-sub">
+            <a href="#">Lorem Ipsum</a>
+            <a href="#">Dolor Sit</a>
+            <a href="#">Amet Consectetur</a>
+          </div>
+        </details>
+        <a href="#" class="sb-item">Careers &amp; Education</a>
+        <a href="#" class="sb-item">Banking</a>
+        <a href="#" class="sb-item">Legal Services</a>
+        <a href="#" class="sb-item">Special Features</a>
+        <a href="#" class="sb-item">Press Releases</a>
+
+        <div class="sb-divider"></div>
+
+        <details class="sb-group">
+          <summary>Sponsored Content</summary>
+          <div class="sb-sub">
+            <a href="#">Lorem Ipsum</a>
+            <a href="#">Dolor Sit</a>
+            <a href="#">Amet Consectetur</a>
+          </div>
+        </details>
+        <details class="sb-group">
+          <summary>Classifieds</summary>
+          <div class="sb-sub">
+            <a href="#">Lorem Ipsum</a>
+            <a href="#">Dolor Sit</a>
+            <a href="#">Amet Consectetur</a>
+          </div>
+        </details>
+        <a href="#" class="sb-item">Place an Ad - Celebrations</a>
+        <a href="#" class="sb-item">Search Jobs</a>
+        <a href="#" class="sb-item">Search Legal Notices</a>
+        <details class="sb-group">
+          <summary>Advertising</summary>
+          <div class="sb-sub">
+            <a href="#">Lorem Ipsum</a>
+            <a href="#">Dolor Sit</a>
+            <a href="#">Amet Consectetur</a>
+          </div>
+        </details>
+      </aside>
     </div>
 
     <div class="promo-bar">

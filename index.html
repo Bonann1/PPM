@@ -111,7 +111,7 @@
         font-size: 13px;
       }
       .topbar-right .sep {
-        color: #bbb;
+        color: #000;
       }
       .subscribe-btn {
         background: #000;
@@ -464,20 +464,115 @@
       }
 
       /* ════ VIDEOS ════ */
-      .video-player { display: flex; background: transparent; margin-bottom: var(--gap); overflow: hidden; border-radius: 3px; height: 430px; }
-      .vp-main { flex: 1; position: relative; background: #000; overflow: hidden; min-width: 0; }
-      .vp-stage { position: relative; width: 100%; height: 100%; background: #000; overflow: hidden; }
-      .vp-stage img { width: 100%; height: 100%; object-fit: cover; }
-      .vp-play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 64px; height: 64px; border: 2px solid #fff; border-radius: 50%; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 2; }
-      .vp-play-btn svg { width: 26px; height: 26px; fill: #fff; margin-left: 3px; }
-      .vp-sidebar { width: 200px; flex-shrink: 0; background: #fff; overflow-y: scroll; overflow-x: hidden; padding: 8px; display: flex; flex-direction: column; gap: 8px; scrollbar-color: #bbb #f0f0f0; scrollbar-width: thin; border: 1px solid var(--border); border-left: 0; }
-      .vp-sidebar::-webkit-scrollbar { width: 8px; }
-      .vp-sidebar::-webkit-scrollbar-track { background: #f0f0f0; }
-      .vp-sidebar::-webkit-scrollbar-thumb { background: #bbb; border-radius: 4px; }
-      .vp-sidebar::-webkit-scrollbar-thumb:hover { background: #999; }
-      .vp-side-item { position: relative; width: 100%; aspect-ratio: 16/9; background: #c8c8c8; overflow: hidden; border-radius: 3px; flex-shrink: 0; cursor: pointer; }
-      .vp-side-item img { width: 100%; height: 100%; object-fit: cover; }
-      .vp-side-title { position: absolute; inset: 0; padding: 8px; color: #fff; font-family: var(--sans); font-size: 12px; font-weight: 700; line-height: 1.25; background: linear-gradient(to right, rgba(0,0,0,.7) 55%, rgba(0,0,0,.15)); display: flex; align-items: flex-start; }
+      .video-player {
+        display: flex;
+        background: transparent;
+        margin-bottom: var(--gap);
+        overflow: hidden;
+        border-radius: 3px;
+        height: 430px;
+      }
+      .vp-main {
+        flex: 1;
+        position: relative;
+        background: #000;
+        overflow: hidden;
+        min-width: 0;
+      }
+      .vp-stage {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        overflow: hidden;
+      }
+      .vp-stage img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .vp-play-btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 64px;
+        height: 64px;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        background: transparent;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+      }
+      .vp-play-btn svg {
+        width: 26px;
+        height: 26px;
+        fill: #fff;
+        margin-left: 3px;
+      }
+      .vp-sidebar {
+        width: 200px;
+        flex-shrink: 0;
+        background: #fff;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        padding: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        scrollbar-color: #bbb #f0f0f0;
+        scrollbar-width: thin;
+        border: 1px solid var(--border);
+        border-left: 0;
+      }
+      .vp-sidebar::-webkit-scrollbar {
+        width: 8px;
+      }
+      .vp-sidebar::-webkit-scrollbar-track {
+        background: #f0f0f0;
+      }
+      .vp-sidebar::-webkit-scrollbar-thumb {
+        background: #bbb;
+        border-radius: 4px;
+      }
+      .vp-sidebar::-webkit-scrollbar-thumb:hover {
+        background: #999;
+      }
+      .vp-side-item {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16/9;
+        background: #c8c8c8;
+        overflow: hidden;
+        border-radius: 3px;
+        flex-shrink: 0;
+        cursor: pointer;
+      }
+      .vp-side-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .vp-side-title {
+        position: absolute;
+        inset: 0;
+        padding: 8px;
+        color: #fff;
+        font-family: var(--sans);
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 1.25;
+        background: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.7) 55%,
+          rgba(0, 0, 0, 0.15)
+        );
+        display: flex;
+        align-items: flex-start;
+      }
 
       /* ════ FROM OUR PARTNERS — DESKTOP ════ */
       .desktop-partners {
@@ -693,7 +788,7 @@
       }
       .pcs-source {
         font-family: var(--sans);
-        font-size: 10px;
+        font-size: 11px;
         font-weight: 800;
         text-transform: uppercase;
         letter-spacing: 1px;
@@ -905,8 +1000,12 @@
         }
 
         /* Video */
-        .video-player { height: 340px; }
-        .vp-sidebar { width: 170px; }
+        .video-player {
+          height: 340px;
+        }
+        .vp-sidebar {
+          width: 170px;
+        }
 
         /* Partners: hide desktop rows, show responsive */
         .desktop-partners {
@@ -1027,11 +1126,29 @@
         }
 
         /* Video */
-        .video-player { height: 180px; border-radius: 0; margin-bottom: 0; }
-        .vp-sidebar { width: 150px; padding: 5px; gap: 5px; border: 0; }
-        .vp-play-btn { width: 46px; height: 46px; }
-        .vp-play-btn svg { width: 18px; height: 18px; }
-        .vp-side-title { font-size: 10px; padding: 5px; }
+        .video-player {
+          height: 180px;
+          border-radius: 0;
+          margin-bottom: 0;
+        }
+        .vp-sidebar {
+          width: 150px;
+          padding: 5px;
+          gap: 5px;
+          border: 0;
+        }
+        .vp-play-btn {
+          width: 46px;
+          height: 46px;
+        }
+        .vp-play-btn svg {
+          width: 18px;
+          height: 18px;
+        }
+        .vp-side-title {
+          font-size: 11px;
+          padding: 5px;
+        }
 
         /* Partners */
         .desktop-partners {
@@ -1121,14 +1238,16 @@
       }
 
       /* ════ SIDEBAR ════ */
-      #sidebar-toggle {
-        display: none;
+      #sidebar-open {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        overflow: hidden;
       }
       .hamburger {
         list-style: none;
-      }
-      .hamburger::-webkit-details-marker {
-        display: none;
       }
       .sidebar {
         position: absolute;
@@ -1147,7 +1266,7 @@
         border-right: 1px solid var(--border);
         padding: 18px 22px 80px;
       }
-      #sidebar-toggle:checked ~ .site-header .sidebar {
+      #sidebar-open:target ~ .site-header .sidebar {
         transform: translateX(0);
       }
       .sidebar-overlay {
@@ -1162,11 +1281,11 @@
         pointer-events: none;
         transition: opacity 0.3s ease;
       }
-      #sidebar-toggle:checked ~ .sidebar-overlay {
+      #sidebar-open:target ~ .sidebar-overlay {
         opacity: 1;
         pointer-events: auto;
       }
-      body:has(#sidebar-toggle:checked) {
+      body:has(#sidebar-open:target) {
         overflow: hidden;
       }
       .sb-search {
@@ -1292,9 +1411,9 @@
     </style>
   </head>
   <body>
-    <!-- SIDEBAR TOGGLE -->
-    <input type="checkbox" id="sidebar-toggle" />
-    <label for="sidebar-toggle" class="sidebar-overlay"></label>
+    <!-- SIDEBAR TOGGLE (CSS-only via :target) -->
+    <a id="sidebar-open" tabindex="-1" aria-hidden="true"></a>
+    <a href="#" class="sidebar-overlay" aria-label="Close menu"></a>
     <!-- SITE HEADER -->
     <div class="site-header">
       <div class="topbar">
@@ -1319,7 +1438,9 @@
       <nav class="mainnav">
         <div class="nav-inner">
           <div class="nav-icons">
-            <label for="sidebar-toggle" class="hamburger"><span></span><span></span><span></span></label>
+            <a href="#sidebar-open" class="hamburger" aria-label="Open menu"
+              ><span></span><span></span><span></span
+            ></a>
             <div class="nav-search">
               <svg viewBox="0 0 24 24">
                 <circle cx="11" cy="11" r="7.5" />
@@ -1343,7 +1464,7 @@
       </nav>
       <!-- SIDEBAR -->
       <aside class="sidebar" aria-label="Site menu">
-        <form class="sb-search" onsubmit="return false">
+        <form class="sb-search" onsubmit="return false;">
           <input type="text" placeholder="Search" aria-label="Search" />
           <svg viewBox="0 0 24 24">
             <circle cx="11" cy="11" r="7.5" />
@@ -1435,35 +1556,51 @@
 
         <div class="sb-featured-title">Featured</div>
         <a href="#" class="sb-feat-item">
-          <div class="sb-feat-img"><img src="https://placehold.co/144x100" alt="" /></div>
+          <div class="sb-feat-img">
+            <img src="https://placehold.co/144x100" alt="" />
+          </div>
           <span>Miami.com</span>
         </a>
         <a href="#" class="sb-feat-item">
-          <div class="sb-feat-img"><img src="https://placehold.co/144x100" alt="" /></div>
+          <div class="sb-feat-img">
+            <img src="https://placehold.co/144x100" alt="" />
+          </div>
           <span>Detour Travel</span>
         </a>
         <a href="#" class="sb-feat-item">
-          <div class="sb-feat-img"><img src="https://placehold.co/144x100" alt="" /></div>
+          <div class="sb-feat-img">
+            <img src="https://placehold.co/144x100" alt="" />
+          </div>
           <span>Florida Keys News</span>
         </a>
         <a href="#" class="sb-feat-item">
-          <div class="sb-feat-img"><img src="https://placehold.co/144x100" alt="" /></div>
+          <div class="sb-feat-img">
+            <img src="https://placehold.co/144x100" alt="" />
+          </div>
           <span>El Nuevo Herald</span>
         </a>
         <a href="#" class="sb-feat-item">
-          <div class="sb-feat-img"><img src="https://placehold.co/144x100" alt="" /></div>
+          <div class="sb-feat-img">
+            <img src="https://placehold.co/144x100" alt="" />
+          </div>
           <span>Miami-Dade Favorites</span>
         </a>
         <a href="#" class="sb-feat-item">
-          <div class="sb-feat-img"><img src="https://placehold.co/144x100" alt="" /></div>
+          <div class="sb-feat-img">
+            <img src="https://placehold.co/144x100" alt="" />
+          </div>
           <span>Coral Springs News</span>
         </a>
         <a href="#" class="sb-feat-item">
-          <div class="sb-feat-img"><img src="https://placehold.co/144x100" alt="" /></div>
+          <div class="sb-feat-img">
+            <img src="https://placehold.co/144x100" alt="" />
+          </div>
           <span>Miramar News</span>
         </a>
         <a href="#" class="sb-feat-item">
-          <div class="sb-feat-img"><img src="https://placehold.co/144x100" alt="" /></div>
+          <div class="sb-feat-img">
+            <img src="https://placehold.co/144x100" alt="" />
+          </div>
           <span>Pembroke Pines News</span>
         </a>
 
@@ -1822,43 +1959,82 @@
       <div class="video-player">
         <div class="vp-main">
           <div class="vp-stage">
-            <img src="https://placehold.co/1200x675/c0c7d0/6e7a8a?text=Video" alt="" />
+            <img
+              src="https://placehold.co/1200x675/c0c7d0/6e7a8a?text=Video"
+              alt=""
+            />
             <button class="vp-play-btn" aria-label="Play">
-              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
             </button>
           </div>
         </div>
         <div class="vp-sidebar">
           <div class="vp-side-item">
-            <img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Video" alt="" />
-            <div class="vp-side-title">Lorem ipsum dolor sit amet consectetur</div>
+            <img
+              src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Video"
+              alt=""
+            />
+            <div class="vp-side-title">
+              Lorem ipsum dolor sit amet consectetur
+            </div>
           </div>
           <div class="vp-side-item">
-            <img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Video" alt="" />
-            <div class="vp-side-title">Ut enim ad minim veniam quis nostrud</div>
+            <img
+              src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Video"
+              alt=""
+            />
+            <div class="vp-side-title">
+              Ut enim ad minim veniam quis nostrud
+            </div>
           </div>
           <div class="vp-side-item">
-            <img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Video" alt="" />
-            <div class="vp-side-title">Duis aute irure dolor in reprehenderit</div>
+            <img
+              src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Video"
+              alt=""
+            />
+            <div class="vp-side-title">
+              Duis aute irure dolor in reprehenderit
+            </div>
           </div>
           <div class="vp-side-item">
-            <img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Video" alt="" />
-            <div class="vp-side-title">Excepteur sint occaecat cupidatat non</div>
+            <img
+              src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Video"
+              alt=""
+            />
+            <div class="vp-side-title">
+              Excepteur sint occaecat cupidatat non
+            </div>
           </div>
           <div class="vp-side-item">
-            <img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Video" alt="" />
+            <img
+              src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Video"
+              alt=""
+            />
             <div class="vp-side-title">Sed ut perspiciatis unde omnis iste</div>
           </div>
           <div class="vp-side-item">
-            <img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Video" alt="" />
-            <div class="vp-side-title">Nemo enim ipsam voluptatem quia voluptas</div>
+            <img
+              src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Video"
+              alt=""
+            />
+            <div class="vp-side-title">
+              Nemo enim ipsam voluptatem quia voluptas
+            </div>
           </div>
           <div class="vp-side-item">
-            <img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Video" alt="" />
-            <div class="vp-side-title">Neque porro quisquam est qui dolorem</div>
+            <img
+              src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Video"
+              alt=""
+            />
+            <div class="vp-side-title">
+              Neque porro quisquam est qui dolorem
+            </div>
           </div>
           <div class="vp-side-item">
-            <img src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Video" alt="" />
+            <img
+              src="https://placehold.co/400x225/c0c7d0/6e7a8a?text=Video"
+              alt=""
+            />
             <div class="vp-side-title">At vero eos et accusamus et iusto</div>
           </div>
         </div>
@@ -2770,7 +2946,7 @@
         </div>
         <div class="footer-cols">
           <div class="fcol fcol-about">
-            <h4>About</h4>
+            <h2>About</h2>
             <ul>
               <li><a href="#">About Us</a></li>
               <li><a href="#">Site Map</a></li>
@@ -2779,7 +2955,7 @@
             </ul>
           </div>
           <div class="fcol fcol-subscr">
-            <h4>Subscriptions</h4>
+            <h2>Subscriptions</h2>
             <ul>
               <li><a href="#">Customer Service</a></li>
               <li><a href="#">Start a Subscription</a></li>
@@ -2834,7 +3010,7 @@
             </div>
           </div>
           <div class="fcol fcol-advert">
-            <h4>Advertising</h4>
+            <h2>Advertising</h2>
             <ul>
               <li><a href="#">Mcclatchy Advertising</a></li>
               <li><a href="#">Place an Ad</a></li>
@@ -2846,7 +3022,7 @@
             </ul>
           </div>
           <div class="fcol fcol-explore">
-            <h4>Explore</h4>
+            <h2>Explore</h2>
             <ul>
               <li><a href="#">Read Today's Edition</a></li>
               <li><a href="#">Mobile Apps</a></li>
